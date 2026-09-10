@@ -1,4 +1,22 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Halation updates</title><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400..700&display=swap"><style>body{margin:0;background:#131110;color:#f3ede3;font:440 15px/1.55 "Instrument Sans",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}main{max-width:68ch;margin:0 auto;padding:48px 24px 96px}h1{font-size:26px;font-weight:600;letter-spacing:-.02em;margin:0}.sub{color:#9c9383;margin:6px 0 8px}nav{display:flex;gap:18px;margin:0 0 36px;font-size:14px}a{color:#8dd3d2;text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:3px}h2{font-size:18px;font-weight:600;margin:40px 0 10px;padding-top:22px;border-top:1px solid rgba(255,240,220,.1)}p{margin:8px 0}b{color:#ffb08a;font-weight:600}ul{margin:6px 0 12px;padding-left:20px}li{margin:4px 0}code{font-family:"Geist Mono",Menlo,monospace;font-size:13px;background:#221e1b;padding:1px 5px;border-radius:4px}.chip{display:inline-block;margin-top:10px;font:500 12px "Geist Mono",Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;color:#9c9383;border:1px dashed rgba(255,240,220,.16);border-radius:4px;padding:2px 8px}</style></head><body><main><h1>Halation updates</h1><p class="sub">What changed, newest first. Written for the team.</p><nav><a href="./">Landing page</a><a href="app.html">Demo app</a></nav><h2>2026-09-09 · v0.7 · Every push now ships with notes</h2>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Halation updates</title><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400..700&display=swap"><style>body{margin:0;background:#131110;color:#f3ede3;font:440 15px/1.55 "Instrument Sans",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}main{max-width:68ch;margin:0 auto;padding:48px 24px 96px}h1{font-size:26px;font-weight:600;letter-spacing:-.02em;margin:0}.sub{color:#9c9383;margin:6px 0 8px}nav{display:flex;gap:18px;margin:0 0 36px;font-size:14px}a{color:#8dd3d2;text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:3px}h2{font-size:18px;font-weight:600;margin:40px 0 10px;padding-top:22px;border-top:1px solid rgba(255,240,220,.1)}p{margin:8px 0}b{color:#ffb08a;font-weight:600}ul{margin:6px 0 12px;padding-left:20px}li{margin:4px 0}code{font-family:"Geist Mono",Menlo,monospace;font-size:13px;background:#221e1b;padding:1px 5px;border-radius:4px}.chip{display:inline-block;margin-top:10px;font:500 12px "Geist Mono",Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;color:#9c9383;border:1px dashed rgba(255,240,220,.16);border-radius:4px;padding:2px 8px}</style></head><body><main><h1>Halation updates</h1><p class="sub">What changed, newest first. Written for the team.</p><nav><a href="./">Landing page</a><a href="app.html">Demo app</a></nav><h2>2026-09-09 · v0.7.1 · The Halation mark</h2>
+<p><b>Why:</b> the placeholder glow next to the name was a stand-in. The product needed a real mark that carries the name&#x27;s meaning and works from a favicon to a poster.</p>
+<p><b>Added</b></p>
+<ul>
+<li>The logo: a film frame with a light sitting in its top-right corner, tangent to both edges. Where the light sits, the outline melts and the glow bleeds through. That is what halation is. Files in <code>brand/</code>: SVG mark for dark and light backgrounds, a one-colour version, the horizontal lockup, and PNGs (lockup at 1400 by 420 on dark, light and transparent; mark at 1024; icon at 512). <code>brand/README.md</code> has the construction, colours, minimum sizes and the don&#x27;ts.</li>
+<li>Favicon and iOS home-screen icon on the landing page, the demo app and the single-file build.</li>
+<li>A standard shape for research reports, <code>research/TEMPLATE.md</code>, so reports from any AI tool read the same. New or changed reports post their Summary to the research channel on Discord automatically when that channel&#x27;s webhook is set.</li>
+</ul>
+<p><b>Changed</b></p>
+<ul>
+<li>The mark in the app (landing nav, setup wizard) is now the same construction as the logo, drawn in CSS at 22 px.</li>
+<li>Version shown in the app and on the updates page is 0.7.1.</li>
+</ul>
+<p><b>For the team</b></p>
+<ul>
+<li>Open the landing page and look top-left. Tell Spencer if the mark reads wrong at a glance; the light should look like it is burning through the corner of the frame, not sitting on it like a badge.</li>
+<li>The PNGs in <code>brand/</code> are safe to use on decks and social.</li>
+</ul>
+<h2>2026-09-09 · v0.7 · Every push now ships with notes</h2>
 <p><b>Why:</b> the team follows Discord, not git. From now on every push carries an entry here, and the same notes land in Discord, so anyone can see what changed and trace a change back to its commits.</p>
 <p><b>Added</b></p>
 <ul>
@@ -57,4 +75,4 @@
 <h2>2026-09-09 · v0.6 · Baseline before the repass</h2>
 <ul>
 <li>Snapshot of the v0.6 mockup, vision doc and research before the design-system rebuild.</li>
-</ul><div class="chip">Prototype · v0.7 · sample data</div></main></body></html>
+</ul><div class="chip">Prototype · v0.7.1 · sample data</div></main></body></html>

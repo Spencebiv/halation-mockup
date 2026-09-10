@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="core" cx="40%" cy="38%" r="64%"><stop offset="0" stop-color="#fff5ea"/><stop offset=".4" stop-color="#ffb08a"/><stop offset="1" stop-color="#ff7f5b"/></radialGradient>
+    <radialGradient id="bloom"><stop offset="0" stop-color="#ff7f5b" stop-opacity=".55"/><stop offset=".45" stop-color="#ff7f5b" stop-opacity=".18"/><stop offset="1" stop-color="#ff7f5b" stop-opacity="0"/></radialGradient>
+    <radialGradient id="melt" gradientUnits="userSpaceOnUse" cx="40" cy="24" r="21"><stop offset=".55" stop-color="#000"/><stop offset="1" stop-color="#fff"/></radialGradient>
+    <mask id="gap"><rect width="64" height="64" fill="url(#melt)"/></mask>
+    <mask id="gap-hard"><rect width="64" height="64" fill="#fff"/><circle cx="40" cy="24" r="14" fill="#000"/></mask>
+  </defs>
+  <g>
+  <circle cx="40" cy="24" r="24" fill="url(#bloom)"/>
+  <rect x="8" y="14" width="42" height="42" rx="9.5" fill="none" stroke="#f3ede3" stroke-width="3.5" mask="url(#gap)"/>
+  <circle cx="40" cy="24" r="10" fill="url(#core)"/>
+</g>
+</svg>
