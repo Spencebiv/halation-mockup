@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Halation updates</title><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400..700&display=swap"><style>body{margin:0;background:#131110;color:#f3ede3;font:440 15px/1.55 "Instrument Sans",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}main{max-width:68ch;margin:0 auto;padding:48px 24px 96px}h1{font-size:26px;font-weight:600;letter-spacing:-.02em;margin:0}.sub{color:#9c9383;margin:6px 0 8px}nav{display:flex;gap:18px;margin:0 0 36px;font-size:14px}a{color:#8dd3d2;text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:3px}h2{font-size:18px;font-weight:600;margin:40px 0 10px;padding-top:22px;border-top:1px solid rgba(255,240,220,.1)}p{margin:8px 0}b{color:#ffb08a;font-weight:600}ul{margin:6px 0 12px;padding-left:20px}li{margin:4px 0}code{font-family:"Geist Mono",Menlo,monospace;font-size:13px;background:#221e1b;padding:1px 5px;border-radius:4px}.chip{display:inline-block;margin-top:10px;font:500 12px "Geist Mono",Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;color:#9c9383;border:1px dashed rgba(255,240,220,.16);border-radius:4px;padding:2px 8px}</style></head><body><main><h1>Halation updates</h1><p class="sub">What changed, newest first. Written for the team.</p><nav><a href="./">Landing page</a><a href="app.html">Demo app</a></nav><h2>2026-09-09 · v0.7 · Every push now ships with notes</h2>
+<p><b>Why:</b> the team follows Discord, not git. From now on every push carries an entry here, and the same notes land in Discord, so anyone can see what changed and trace a change back to its commits.</p>
+<p><b>Added</b></p>
+<ul>
+<li>This changelog. Newest entry on top; the format is at the top of the file.</li>
+<li><code>tools/ship.sh</code>: one command that commits with the top entry as the message, pushes, republishes the public site, and posts the notes to Discord with a link to the exact commits.</li>
+<li>A git guard that refuses a push carrying no new changelog entry.</li>
+<li><code>CLAUDE.md</code>: working rules for anyone, or any Claude session, touching this repo.</li>
+<li>A public updates page, <a href="https://spencebiv.github.io/halation-mockup/changelog.html,">https://spencebiv.github.io/halation-mockup/changelog.html,</a> built from this file on every ship. No account needed.</li>
+</ul>
+<p><b>For the team</b></p>
+<ul>
+<li>Expect one &quot;Halation updates&quot; post in Discord per push. The title is the update, the bullets are the notes, the first link is the public updates page.</li>
+<li>The commit links open the private source repo, so they need a GitHub account that Spencer has invited. The GitHub-generated push cards in Discord link there too.</li>
+</ul>
+<h2>2026-09-09 · v0.7 · Public links, GitHub, Discord</h2>
+<p><b>Why:</b> the Claude-hosted links needed a Claude sign-in. The team needs plain links.</p>
+<p><b>Added</b></p>
+<ul>
+<li>Private GitHub repo <code>Spencebiv/halation</code> for the source, research and vision doc.</li>
+<li>Public repo <code>Spencebiv/halation-mockup</code> served by GitHub Pages: landing at <a href="https://spencebiv.github.io/halation-mockup/">https://spencebiv.github.io/halation-mockup/</a> and the demo app at <a href="https://spencebiv.github.io/halation-mockup/app.html.">https://spencebiv.github.io/halation-mockup/app.html.</a> No sign-in.</li>
+<li><code>mockup/publish.sh</code> rebuilds and pushes the public site.</li>
+<li>A Discord webhook on both repos, so every push posts in the team channel.</li>
+</ul>
+<p><b>For the team</b></p>
+<ul>
+<li>Use the GitHub Pages links from now on. The site is public, so it carries sample data only.</li>
+</ul>
+<h2>2026-09-09 · v0.7 · Review pass and layout fixes</h2>
+<p><b>Changed</b></p>
+<ul>
+<li>Project folder renamed from &quot;All in one&quot; to &quot;Halation&quot;.</li>
+</ul>
+<p><b>Fixed</b></p>
+<ul>
+<li>Review-agent fixes across the app: overdue reminders, command palette fallbacks, the side sheet opening reliably.</li>
+<li>Phone-width project cards hid the wrong status slot. Inbox rows overflowed on long file names. The review rail&#x27;s lock buttons overflowed at tablet width. The review player assumed every cut was 30 seconds, so notes on longer cuts sat off the end of the scrubber.</li>
+</ul>
+<p><b>For the team</b></p>
+<ul>
+<li>Verified every page and every project tab at desktop, tablet and phone widths: zero console errors, zero overflow.</li>
+</ul>
+<h2>2026-09-09 · v0.7 · Design system v2 and the tools model</h2>
+<p><b>Why:</b> the full repass: colours that mean one thing, a tool set that adapts per project, a clearly labelled prototype, and two shareable links.</p>
+<p><b>Changed</b></p>
+<ul>
+<li>One meaning per colour. Green is finished, amber is a clock running, red is stop, teal is moving on its own or the client&#x27;s side, orange is you. Teal added quietly alongside the orange.</li>
+<li>Tools come from the Workflow (Commercial, Events, Weddings on; Real Estate, Personal, Documentary, Freelance, Studio available). Personal projects show nothing money-shaped. Add or hide tools per project from the ••• menu.</li>
+<li>Adaptive canvases: Hand, Lap, Bay. Press N for the notes drawer and the demo switches.</li>
+<li>Media tab: year, then client, then project, then what was shared. Files is now the paperwork. Commercial and Events groups collapse. Example figures lowered 15 to 20 percent.</li>
+<li>Landing page rewritten. Labelled Prototype everywhere. Two builds: landing and demo app.</li>
+</ul>
+<p><b>Added</b></p>
+<ul>
+<li>Research: colour system, what looks AI-made, the Apple event of Sep 9 2026, what makes software loved, modularity precedents, the Tools and Workflows specification, Design specification v2.</li>
+</ul>
+<h2>2026-09-09 · v0.6 · Baseline before the repass</h2>
+<ul>
+<li>Snapshot of the v0.6 mockup, vision doc and research before the design-system rebuild.</li>
+</ul><div class="chip">Prototype · v0.7 · sample data</div></main></body></html>
