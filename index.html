@@ -127,7 +127,10 @@ svg { width: 1em; height: 1em; flex: none; }
 .mark { position: relative; width: 22px; height: 22px; flex: none; }
 .mark::before { content: ""; position: absolute; left: 3.5px; top: 3px; width: 3.5px; height: 16px; background: currentColor; box-shadow: 11.5px 0 0 0 currentColor; }
 .mark::after { content: ""; position: absolute; left: 7px; top: 6.2px; width: 8px; height: 8px; border-radius: 50%; background: #ff7f5b; }
-.wordmark { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -0.01em; font-size: var(--t-16); }
+.wordmark { display: inline-flex; align-items: center; }
+.wm { height: 14px; width: auto; display: block; }
+.wm text { font: 600 100px var(--sans); letter-spacing: -2px; fill: currentColor; }
+.wm circle { fill: var(--accent); }
 
 /* ---------- buttons ---------- */
 .btn { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--r-8); font-weight: 600; font-size: var(--t-14); line-height: 1; border: 1px solid var(--line-strong); background: var(--elevated); color: var(--fg); transition: transform var(--t-1) var(--ease), background var(--t-2), border-color var(--t-2); white-space: nowrap; }
@@ -1294,7 +1297,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
 <div id="story" class="story">
   <!-- LANDING (agent C). Live components are rendered by story.js into the empty hosts below. -->
   <header class="l-nav"><div class="l-wrap">
-    <a href="#story" class="wordmark"><span class="mark"></span>Halation</a>
+    <a href="#story" class="wordmark"><svg class="wm" viewBox="0 24 386 80" aria-label="Halation" role="img"><text x="4" y="100">Halatıon</text><circle cx="253.2" cy="37.5" r="7.5"/></svg></a>
     <nav class="l-links" aria-label="Sections"><a href="#l-problem" data-jump="l-problem">The problem</a><a href="#l-product" data-jump="l-product">Product</a><a href="#l-workflows" data-jump="l-workflows">Workflows</a><a href="#l-pricing" data-jump="l-pricing">Pricing</a></nav>
     <a class="btn sm" id="l-nav-cta" href="#app/today">Open the demo</a>
   </div></header>
@@ -1396,7 +1399,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
   </div></section>
 
   <footer class="l-foot"><div class="l-wrap">
-    <span class="mockchip" id="l-version">Prototype · v0.7.2 · 2026-09-09</span>
+    <span class="mockchip" id="l-version">Prototype · v0.7.3 · 2026-09-09</span>
     <span>Clients, people and numbers are sample data.</span>
     <span class="mono l-domain">halation.co</span>
   </div></footer>
@@ -1412,7 +1415,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
 
 window.BRAND = {
   name: "Halation",
-  version: "0.7.2",
+  version: "0.7.3",
   status: "Prototype",
   built: "2026-09-09",
   tagline: "One place to run a camera business.",
@@ -1971,6 +1974,8 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
   };
   const ic = (n, cls) => `<svg class="${cls || ""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n] || ""}</svg>`;
   H.ic = ic;
+  /* the wordmark: Instrument Sans 600 with the i's dot as the light. Same drawing as brand/halation-wordmark.svg. */
+  H.wordmark = () => '<svg class="wm" viewBox="0 24 386 80" aria-label="Halation" role="img"><text x="4" y="100">Halatıon</text><circle cx="253.2" cy="37.5" r="7.5"/></svg>';
 
   /* ---------- time + formatting (local dates, no UTC drift) ---------- */
   const pad = (n) => String(n).padStart(2, "0");
@@ -3596,7 +3601,7 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
     const firstrun = [["Send yourself a review link", "Opens Review on your first project. Picture lock it and the pill goes green."], ["Drop one file into your upload request", "Resumable, verified on arrival. It lands in Footage."], ["Send a $1 test invoice to yourself and pay it", "The only time you'll see the Paid moment for free."]];
     w.innerHTML = `
       <div class="left">
-        <div class="wtop"><span class="wordmark"><span class="mark"></span>${esc(BRAND.name)}</span><div class="steps" aria-label="Progress">${ONBOARDING.map((_, i) => `<i class="${i < wiz.step ? "done" : i === wiz.step ? "now" : ""}"></i>`).join("")}</div><a href="#story" class="exit">Exit</a></div>
+        <div class="wtop"><span class="wordmark">${H.wordmark()}</span><div class="steps" aria-label="Progress">${ONBOARDING.map((_, i) => `<i class="${i < wiz.step ? "done" : i === wiz.step ? "now" : ""}"></i>`).join("")}</div><a href="#story" class="exit">Exit</a></div>
         <div class="q">${done ? `<div class="done"><div class="step">Set up in four minutes. No call.</div><h2>${esc(WORKSPACE.name)} is ready.</h2><div class="hint">${wfLabels.length ? plural(wfLabels.length, "Workflow") + " on" : "Commercial on"}, your first project created from your last real job, and invites waiting for the team. A Workflow here is a kind of work, not an email sequence.</div>
             <div class="firstrun">${firstrun.map(([t, s2], i) => `<div class="row" data-fr="${i}"><span class="check ${frDone[i] ? "on" : ""}">${ic("check")}</span><div class="grow"><div class="t">${t}</div><div class="s">${s2}</div></div></div>`).join("")}</div>
             <div class="nav"><button class="btn primary lg" id="wopen">Open ${esc(WORKSPACE.name)}${ic("arrowR")}</button><a class="link" href="#app/workflows">Change anything in Workflows</a></div></div>` :
