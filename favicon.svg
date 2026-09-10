@@ -1,14 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <defs>
-    <radialGradient id="core" cx="40%" cy="38%" r="64%"><stop offset="0" stop-color="#fff5ea"/><stop offset=".4" stop-color="#ffb08a"/><stop offset="1" stop-color="#ff7f5b"/></radialGradient>
-    <radialGradient id="bloom"><stop offset="0" stop-color="#ff7f5b" stop-opacity=".55"/><stop offset=".45" stop-color="#ff7f5b" stop-opacity=".18"/><stop offset="1" stop-color="#ff7f5b" stop-opacity="0"/></radialGradient>
-    <radialGradient id="melt" gradientUnits="userSpaceOnUse" cx="40" cy="24" r="21"><stop offset=".55" stop-color="#000"/><stop offset="1" stop-color="#fff"/></radialGradient>
-    <mask id="gap"><rect width="64" height="64" fill="url(#melt)"/></mask>
-    <mask id="gap-hard"><rect width="64" height="64" fill="#fff"/><circle cx="40" cy="24" r="14" fill="#000"/></mask>
-  </defs>
-  <g>
-  <circle cx="40" cy="24" r="24" fill="url(#bloom)"/>
-  <rect x="8" y="14" width="42" height="42" rx="9.5" fill="none" stroke="#f3ede3" stroke-width="3.5" mask="url(#gap)"/>
-  <circle cx="40" cy="24" r="10" fill="url(#core)"/>
-</g>
+  <style>.bar{fill:#f3ede3}.disc{fill:#ff7f5b}@media (prefers-color-scheme: light){.bar{fill:#1b1815}.disc{fill:#d9553a}}</style>
+  <defs><mask id="bite"><rect width="64" height="64" fill="#fff"/><circle cx="32" cy="29.5" r="15.0" fill="#000"/></mask></defs>
+  <g mask="url(#bite)"><rect class="bar" x="10" y="7" width="11" height="50" fill="#f3ede3"/><rect class="bar" x="43" y="7" width="11" height="50" fill="#f3ede3"/></g>
+  <circle class="disc" cx="32" cy="29.5" r="12.5" fill="#ff7f5b"/>
 </svg>
