@@ -1291,6 +1291,209 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
   .wizard .right { border-left: 0; border-top: 1px solid var(--line); padding: 24px 20px; }
 }
 
+/* Isolated Home experiment. Solid content; glass belongs only to floating controls. */
+.wh-home,.wh-estate,.wh-app-page { max-width: 1320px; margin: 0 auto; }
+.wh-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; margin:8px 0 32px; }
+.wh-heading h1 { font-size:34px; line-height:1.12; font-weight:550; letter-spacing:-.035em; margin:12px 0; }
+.wh-heading p { color:var(--fg-3); font-size:14px; margin:0; }
+.wh-eyebrow { font-size:12px; color:var(--fg-3); letter-spacing:.08em; text-transform:uppercase; }
+.wh-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.wh-card { position:relative; isolation:isolate; border:1px solid var(--line); border-radius:12px; padding:22px; background:var(--surface); min-width:0; min-height:220px; display:flex; flex-direction:column; transition:transform 180ms ease, border-color 180ms ease; }
+.wh-card:hover { transform:translateY(-2px); border-color:var(--line-strong); }
+.wh-card:focus-within { outline:2px solid var(--teal); outline-offset:3px; }
+.wh-card-link { text-decoration:none; }
+.wh-card-link:after { content:""; position:absolute; inset:0; z-index:1; border-radius:12px; }
+.wh-card-title { display:flex; gap:9px; align-items:center; color:var(--fg-3); margin-bottom:26px; }
+.wh-card-title h2 { color:var(--fg-2); font-size:13px; font-weight:500; margin:0; flex:1; }
+.wh-card-title svg { width:16px; height:16px; }
+.wh-card-title>svg:last-child { opacity:.6; }
+.wh-card h3 { font-size:16px; line-height:1.35; font-weight:500; margin:8px 0; }
+.wh-card p { font-size:13px; line-height:1.45; color:var(--fg-3); margin:6px 0; }
+.wh-wide { grid-column:span 2; }
+.wh-number { font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:34px; line-height:1.2; letter-spacing:-.04em; }
+.wh-number span { font-family:var(--sans); font-size:13px; color:var(--fg-3); letter-spacing:0; }
+.wh-bottom { display:flex; align-items:center; gap:8px; margin-top:auto; padding-top:20px; color:var(--fg-3); font-size:12px; }
+.wh-bottom svg { width:16px; height:16px; }
+.wh-client-names { line-height:1.6; }
+.wh-priority strong { display:block; font-size:26px; letter-spacing:-.025em; font-weight:500; line-height:1.2; }
+.wh-priority-card .wh-card-title { margin-bottom:18px; }
+.wh-priority-card .wh-card-title:before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+.wh-priority-card .wh-rows { margin-top:14px; }
+.wh-rows { margin-top:-10px; }
+.wh-row { position:relative; z-index:2; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0; color:var(--fg); text-decoration:none; border-bottom:1px solid var(--line); min-width:0; }
+.wh-row:last-child { border-bottom:0; }
+.wh-row:hover b,.wh-row:hover { color:var(--teal-text); }
+.wh-row>span:first-child { min-width:0; flex:1; }
+.wh-row b { display:block; font-weight:500; font-size:14px; line-height:1.4; }
+.wh-row small { display:block; color:var(--fg-3); font-size:12px; line-height:1.5; margin-top:3px; }
+.wh-row>svg { width:16px; height:16px; flex-shrink:0; color:var(--fg-3); }
+.wh-caption { font-size:12px; color:var(--fg-3); padding-top:16px; margin-top:auto; }
+.wh-date { font-size:26px; font-family:var(--mono); letter-spacing:-.04em; }
+.wh-week { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:6px; margin-bottom:12px; }
+.wh-week>div { display:flex; align-items:center; flex-direction:column; padding:10px 0 4px; border-radius:8px; }
+.wh-week small { font-size:12px; color:var(--fg-3); }
+.wh-week b { font-family:var(--mono); font-size:20px; font-weight:450; margin:10px 0; }
+.wh-week span { height:18px; }
+.wh-week svg { width:13px; height:13px; color:var(--fg-3); }
+.wh-week .wh-today { background:var(--elevated); outline:1px solid var(--line-strong); }
+.wh-empty { color:var(--fg-3); padding:12px 0; font-size:14px; }
+.wh-footer { color:var(--fg-3); font-size:12px; margin:24px 0 48px; line-height:1.6; }
+.wh-float { position:sticky; bottom:0; margin:-12px 0 0 auto; width:max-content; display:flex; align-items:center; background:var(--elevated); border:1px solid var(--line-strong); border-radius:999px; box-shadow:var(--shadow-lg); padding:5px; z-index:8; }
+.wh-float button { display:flex; gap:8px; align-items:center; min-height:44px; padding:0 16px; border:0; background:none; border-radius:999px; color:var(--fg); font:500 13px var(--sans); cursor:pointer; }
+.wh-float button:hover { background:var(--raised); }
+.wh-float span { height:20px; border-left:1px solid var(--line-strong); }
+.wh-float svg { width:16px; height:16px; }
+@supports (backdrop-filter:blur(20px)) { .wh-float { background:color-mix(in srgb,var(--elevated) 85%,transparent); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); } }
+.wh-solid .wh-float { background:var(--elevated); backdrop-filter:none; -webkit-backdrop-filter:none; }
+.wh-editor { background:var(--surface); border:1px solid var(--line-strong); border-radius:12px; padding:24px; margin-bottom:24px; }
+.wh-editor-head { display:flex; gap:16px; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.wh-editor h2 { font-size:20px; font-weight:500; margin:0 0 6px; }
+.wh-editor p { color:var(--fg-3); font-size:13px; margin:0; }
+.wh-edit-list { display:grid; grid-template-columns:1fr 1fr; gap:0 28px; }
+.wh-edit-row { display:flex; align-items:center; gap:12px; border-top:1px solid var(--line); padding:10px 0; }
+.wh-edit-row>span { flex:1; font-size:14px; }
+.wh-edit-row>svg { width:18px; height:18px; color:var(--fg-3); }
+.wh-edit-row .iconbtn { min-width:36px; min-height:44px; }
+.wh-editor-foot { display:flex; gap:8px; justify-content:flex-end; margin-top:20px; }
+.wh-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.wh-library-intro { color:var(--fg-3); font-size:14px; line-height:1.6; margin-bottom:24px; }
+.wh-app-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:24px 0; }
+.wh-app-tile { display:flex; align-items:flex-start; flex-direction:column; gap:24px; border:1px solid var(--line); border-radius:12px; padding:18px; background:var(--surface); color:var(--fg); text-decoration:none; }
+.wh-app-tile:hover { background:var(--elevated); border-color:var(--line-strong); }
+.wh-app-tile>svg { width:24px; height:24px; color:var(--fg-2); }
+.wh-app-tile b { font-size:13px; font-weight:500; }
+.wh-work-list,.wh-schedule { border:1px solid var(--line); border-radius:12px; padding:8px 24px; background:var(--surface); }
+.wh-work-list>.wh-row { padding:22px 0; }
+.wh-task-row { display:flex; align-items:center; gap:16px; }
+.wh-task-row .wh-row { flex:1; }
+.wh-app-badge { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--fg-3); }
+.wh-re-summary { display:flex; gap:32px; padding:0 0 28px; border-bottom:1px solid var(--line); font-size:13px; color:var(--fg-3); }
+.wh-re-summary b { font-family:var(--mono); font-size:20px; color:var(--fg); font-weight:450; margin-right:5px; }
+.wh-re-toolbar { display:flex; align-items:center; justify-content:space-between; gap:20px; margin:24px 0 16px; }
+.wh-search { display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:var(--surface); }
+.wh-search input { width:210px; background:none; color:var(--fg); font:13px var(--sans); border:0; outline:none; }
+.wh-search svg { width:16px; height:16px; color:var(--fg-3); }
+.wh-search:focus-within { outline:2px solid var(--teal); }
+.wh-re-filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+.wh-re-filters button { cursor:pointer; color:var(--fg-3); border:1px solid transparent; border-radius:999px; background:none; padding:8px 14px; font:13px var(--sans); min-height:40px; }
+.wh-re-filters button.on { border-color:var(--teal-line); background:var(--teal-soft); color:var(--teal-text); }
+.wh-board { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.wh-board-column h2 { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--fg-2); font-weight:500; margin:0 0 16px; }
+.wh-board-column h2 span { font-family:var(--mono); color:var(--fg-3); }
+.wh-listing { display:block; color:var(--fg); text-decoration:none; background:var(--surface); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-bottom:16px; transition:border-color 180ms ease,transform 180ms ease; }
+.wh-listing:hover { border-color:var(--line-strong); transform:translateY(-2px); }
+.wh-house-art { position:relative; height:120px; padding:10px 16px 0; background:var(--elevated); }
+.wh-house-art svg { width:100%; height:100%; stroke:var(--fg-3); stroke-width:1; opacity:.55; }
+.wh-house-art span { position:absolute; top:14px; left:16px; color:var(--fg-3); font:12px var(--mono); }
+.wh-listing-body { padding:20px; }
+.wh-listing h3 { font-size:20px; font-weight:500; line-height:1.25; margin:14px 0 8px; letter-spacing:-.02em; }
+.wh-listing p { color:var(--fg-3); font-size:13px; margin:0 0 20px; }
+.wh-listing-package { font-size:13px; color:var(--fg-2); line-height:1.5; min-height:40px; }
+.wh-listing footer { display:flex; gap:8px; justify-content:space-between; border-top:1px solid var(--line); padding-top:16px; margin-top:16px; font-size:12px; color:var(--fg-3); }
+.wh-listing footer b { font:13px var(--mono); color:var(--fg-2); }
+.wh-listings { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.wh-schedule-row { display:flex; align-items:center; gap:24px; }
+.wh-schedule-row .wh-row { flex:1; }
+.wh-date-block small,.wh-date-block b { display:block; }
+.wh-date-block small { color:var(--fg-3); font-size:12px; }
+.wh-date-block b { font:20px var(--mono); margin-top:8px; }
+.wh-detail-grid { display:grid; grid-template-columns:minmax(0,1.8fr) minmax(260px,1fr); gap:24px; }
+.wh-detail-section { padding:24px; background:var(--surface); border:1px solid var(--line); border-radius:12px; margin-bottom:20px; }
+.wh-detail-section h2 { color:var(--fg-3); font-size:13px; font-weight:500; margin:0 0 22px; }
+.wh-detail-section h3 { font-size:26px; font-weight:500; letter-spacing:-.02em; line-height:1.2; }
+.wh-detail-section p { color:var(--fg-3); font-size:13px; line-height:1.6; }
+.wh-package-items { display:flex; flex-wrap:wrap; gap:12px; margin:24px 0; }
+.wh-package-items span { display:flex; gap:8px; align-items:center; padding:8px 12px; background:var(--elevated); border-radius:8px; font-size:13px; }
+.wh-package-items svg { width:14px; height:14px; color:var(--fg-3); }
+.wh-detail-actions { display:flex; flex-wrap:wrap; gap:8px; }
+.wh-media-readiness { margin:16px 0 24px; }
+.wh-media-readiness>div { display:flex; align-items:center; gap:12px; padding:16px 0; border-bottom:1px solid var(--line); }
+.wh-media-readiness>div>span:not(.pill) { flex:1; min-width:0; }
+.wh-media-readiness b { font-size:14px; font-weight:500; display:block; }
+.wh-media-readiness small { color:var(--fg-3); font-size:12px; display:block; margin-top:4px; }
+.wh-media-readiness svg { width:18px; height:18px; color:var(--fg-3); }
+.wh-home :focus-visible,.wh-estate :focus-visible,.wh-app-grid :focus-visible { outline:2px solid var(--teal); outline-offset:3px; }
+.wh-home button:disabled { opacity:.3; cursor:default; }
+@container content (max-width:1000px) {
+  .wh-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .wh-board,.wh-listings { gap:12px; }
+  .wh-listing-body { padding:16px; }
+  .wh-re-summary { gap:20px; flex-wrap:wrap; }
+}
+@container app (max-width:700px) {
+  .wh-enabled { grid-template-columns:1fr; }
+  .wh-heading { align-items:flex-start; margin:12px 0 24px; gap:12px; }
+  .wh-heading h1 { font-size:26px; letter-spacing:-.025em; }
+  .wh-heading p { font-size:13px; line-height:1.5; }
+  .wh-eyebrow { font-size:12px; }
+  .wh-grid { gap:12px; }
+  .wh-card { padding:16px; min-height:190px; }
+  .wh-card-title { gap:6px; margin-bottom:22px; }
+  .wh-card-title>svg:last-child { display:none; }
+  .wh-card-title h2 { font-size:12px; }
+  .wh-card-title>svg { width:14px; height:14px; }
+  .wh-number { font-size:26px; }
+  .wh-priority strong { font-size:20px; }
+  .wh-card h3 { font-size:14px; }
+  .wh-date { font-size:20px; }
+  .wh-bottom { flex-wrap:wrap; font-size:12px; }
+  .wh-priority-card .wh-row { gap:10px; }
+  .wh-priority-card .wh-row .pill { display:none; }
+  .wh-footer { margin-bottom:36px; }
+  .wh-float { bottom:0; }
+  .wh-enabled .actionbar:empty { display:none; }
+  .wh-enabled .topbar { gap:8px; }
+  .wh-enabled .crumbs { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+  .wh-editor { padding:16px; }
+  .wh-editor-head { flex-direction:column; align-items:flex-start; }
+  .wh-edit-list { grid-template-columns:1fr; }
+  .wh-re-summary { gap:12px; }
+  .wh-re-summary span { width:100%; display:flex; align-items:center; gap:8px; }
+  .wh-re-summary b { min-width:90px; }
+  .wh-re-toolbar { flex-wrap:wrap; gap:14px; }
+  .wh-search { width:100%; }
+  .wh-search input { width:100%; }
+  .wh-re-filters { gap:4px; }
+  .wh-re-filters button { padding:8px 11px; min-height:44px; }
+  .wh-board,.wh-listings { grid-template-columns:1fr; gap:20px; }
+
+  .wh-listing { display:grid; grid-template-columns:94px minmax(0,1fr); }
+  .wh-house-art { height:100%; padding:0; }
+  .wh-house-art svg { height:150px; margin-top:50px; }
+  .wh-listing h3 { font-size:20px; }
+  .wh-listing-body { padding:16px; }
+  .wh-listing p { margin-bottom:12px; }
+  .wh-listing-package { min-height:0; }
+  .wh-detail-grid { grid-template-columns:1fr; gap:0; }
+  .wh-detail-section { padding:20px; }
+  .wh-schedule { padding:8px 16px; }
+  .wh-schedule-row { flex-wrap:wrap; gap:12px; padding:16px 0; }
+  .wh-schedule-row>.wh-row { flex-basis:60%; }
+  .wh-schedule-row>.btn { width:100%; }
+  .wh-work-list { padding:8px 16px; }
+}
+@container content (max-width:320px) { .wh-grid { grid-template-columns:1fr; } .wh-wide { grid-column:span 1; } }
+@media (prefers-reduced-motion:reduce) { .wh-card,.wh-listing { transition:none; } .wh-card:hover,.wh-listing:hover { transform:none; } }
+@media (prefers-reduced-transparency:reduce) { .wh-float { background:var(--elevated); backdrop-filter:none; -webkit-backdrop-filter:none; } }
+
+.wh-focus { display:flex; align-items:center; gap:10px; margin:-10px 0 24px; width:max-content; color:var(--fg-3); font-size:12px; }
+.wh-focus select { color:var(--fg-2); background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:9px 28px 9px 12px; font:13px var(--sans); min-height:44px; }
+.wh-money-total { margin-bottom:28px; }
+.wh-money-total p { color:var(--fg-3); font-size:13px; }
+.wh-invoice-end { display:flex; align-items:center; gap:16px; }
+.wh-invoice-end>b { font-family:var(--mono); }
+@container app (max-width:700px) { .wh-invoice-end { flex-direction:column; align-items:flex-end; gap:8px; } }
+@container app (max-width:700px) {
+  .wh-estate .wh-re-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding-bottom:20px; }
+  .wh-estate .wh-re-summary span { width:auto; display:flex; flex-direction:column; align-items:flex-start; gap:5px; line-height:1.4; font-size:12px; }
+  .wh-estate .wh-re-summary b { min-width:0; font-size:20px; }
+  .wh-priority-card .wh-row { padding:10px 0; }
+  .wh-home .wh-heading { margin-bottom:20px; }
+}
+/* Keep prototype undo messages readable while using the phone-sized experiment. */
+body:has(#app.wh-enabled) .toast { width:max-content; }
+body:has(#app.wh-enabled) .toast>span:not(.ok) { min-width:0; }
+
 </style>
 </head>
 <body>
@@ -1400,7 +1603,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
   </div></section>
 
   <footer class="l-foot"><div class="l-wrap">
-    <span class="mockchip" id="l-version">Prototype · v0.7.4 · 2026-09-09</span>
+    <span class="mockchip" id="l-version">Prototype · v0.7.5 · 2026-09-09</span>
     <span>Clients, people and numbers are sample data.</span>
     <span class="mono l-domain">halation.co</span>
   </div></footer>
@@ -1417,7 +1620,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
 
 window.BRAND = {
   name: "Halation",
-  version: "0.7.4",
+  version: "0.7.5",
   status: "Prototype",
   built: "2026-09-11",
   tagline: "One place to run a camera business.",
@@ -2246,7 +2449,7 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
     if (inApp) { H.renderShell(); H.renderView(); } else if (state.route.view === "onboard") { H.views.onboard && H.views.onboard(wiz); } else { window.scrollTo({ top: 0 }); H.paintStills(story); }
   };
   H.rerender = () => { if (state.route.view === "story" || state.route.view === "onboard") return H.route(); H.renderShell(); H.renderView(); };
-  H.renderView = () => { const c = $("#content"); c.scrollTop = 0; const r = state.route; const fn = H.views[r.view] || H.views.today; if (fn) fn(c, r); H.paintStills(c); H.setActionbar(state.actions || []); };
+  H.renderView = () => { const c = $("#content"); c.scrollTop = 0; const r = state.route; const fn = r.view === "today" && H.widgetHome?.enabled() ? H.widgetHome.render : H.views[r.view] || H.views.today; if (fn) fn(c, r); H.paintStills(c); H.setActionbar(state.actions || []); };
   window.addEventListener("hashchange", H.route);
 
   /* ---------- shell ---------- */
@@ -2266,7 +2469,7 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
     { id: "settings", label: "Settings", icon: "settings" }
   ];
   H.activeInbox = () => INBOX.filter((i) => { const p = PROJECTS.find((x) => x.id === i.project); const t = KIND_TOOL[i.kind]; return p && wf(p.workflow).on && (!t || has(p, t)); });
-  const navItem = (n, v) => { const badge = n.badge ? n.badge() : 0, count = n.count ? n.count() : 0; return `<button class="nav-item ${v === n.id ? "on" : ""}" data-view="${n.id}" ${v === n.id ? 'aria-current="page"' : ""}>${ic(n.icon)}<span>${n.label}</span>${badge ? `<span class="badge">${badge}</span>` : count ? `<span class="count">${count}</span>` : ""}</button>`; };
+  const navItem = (n, v) => { const badge = n.badge ? n.badge() : 0, count = n.count ? n.count() : 0; return `<button class="nav-item ${v === n.id ? "on" : ""}" data-view="${n.id}" ${v === n.id ? 'aria-current="page"' : ""}>${ic(n.icon)}<span>${n.id === "today" && H.widgetHome?.enabled() ? "Home" : n.label}</span>${badge ? `<span class="badge">${badge}</span>` : count ? `<span class="count">${count}</span>` : ""}</button>`; };
   H.renderShell = () => {
     const app = $("#app"), v = state.route.view === "project" ? "projects" : state.route.view;
     const wfs = H.activeWorkflows();
@@ -2295,11 +2498,12 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
         <div class="content" id="content"></div>
         <div class="actionbar" id="actionbar"></div>
       </div>`;
-    $$("[data-lens]", app).forEach((b) => (b.onclick = () => { state.lens = b.dataset.lens; state.route = { view: "projects" }; H.rerender(); }));
+    $$("[data-lens]", app).forEach((b) => (b.onclick = () => { state.lens = b.dataset.lens; if (!(state.route.view === "today" && H.widgetHome?.enabled())) state.route = { view: "projects" }; H.rerender(); }));
     $$(".nav-item", app).forEach((b) => (b.onclick = () => H.go(b.dataset.view)));
     $$("[data-go]", app).forEach((b) => (b.onclick = () => H.go(b.dataset.go)));
     $("#open-palette", app).onclick = H.openPalette; $("#open-palette", app).onkeydown = (e) => { if (e.key === "Enter") H.openPalette(); };
     $("#kbd-help", app).onclick = H.showShortcuts; $("#notes-btn", app).onclick = H.toggleNotes;
+    H.widgetHome?.shell(app);
     const vd = $("#viewas-done", app); if (vd) vd.onclick = () => { state.viewAs = null; H.rerender(); };
     if (!$(".burnin")) { const b = document.createElement("div"); b.className = "burnin"; b.textContent = `Mockup v${BRAND.version} · sample data`; document.body.appendChild(b); }
   };
@@ -2365,14 +2569,16 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
   H.toggleNotes = () => {
     if ($(".sheet-back.on")) return H.sheet.close();
     const v = state.route.view === "project" ? (state.route.tab === "overview" ? "project" : state.route.tab) : state.route.view;
-    const notes = NOTES[v] || NOTES.project || [];
+    const notes = v === "today" && H.widgetHome?.enabled() ? [] : NOTES[v] || NOTES.project || [];
     const sheet = H.sheet.open({ title: `Notes · ${v}`, body: `
       <div class="note"><h4>${esc(BRAND.status)} · v${BRAND.version} · ${BRAND.built}</h4><p>Clickable mockup. People, clients and numbers are sample data. Every screen is one of: Wired (works), Shaped (looks right, not wired), Phase 2 (planned).</p></div>
+      ${H.widgetHome ? H.widgetHome.notes() : ""}
       ${notes.map((n) => `<div class="note"><h4>${esc(n.t)}${H.pill(n.s === "Wired" ? "Done" : n.s === "Shaped" ? "In progress" : "Not started", { glyph: n.s === "Wired" })}</h4><p>${esc(n.p)}</p><div class="bench">${esc(n.b)}</div></div>`).join("")}
       <div class="note"><h4>Canvas</h4><p>See this screen the way a phone, a tablet on a stand, or the edit bay sees it.</p><div class="seg" style="margin-top:8px">${[["hand", "Hand"], ["lap", "Lap"], ["bay", "Bay"]].map(([k, l]) => `<button class="${state.canvas === k ? "on" : ""}" data-canvas="${k}">${l}</button>`).join("")}</div></div>
       <div class="note"><h4>Demo switches</h4>${[["morning", "Shoot morning · 05:40 on a shoot day"], ["daylight", "Daylight · high contrast, larger type"], ["offline", "Offline · changes queue and sync"], ["everyoneSees", "Everyone sees everything · solo mode"]].map(([k, l]) => `<div class="toggle-row"><div class="grow">${l}</div><button class="tg ${state[k] ? "on" : ""}" data-demo="${k}" role="switch" aria-checked="${!!state[k]}"></button></div>`).join("")}
       <div class="toggle-row"><div class="grow">View as<span class="s">Tools a role can't see are absent, not greyed.</span></div><select class="sel" id="viewas-sel"><option value="">Me (Owner)</option>${ROLES.filter((r) => r.name !== "Owner").map((r) => `<option ${state.viewAs === r.name ? "selected" : ""}>${r.name}</option>`).join("")}</select></div></div>
       <div class="note"><h4>Landing page</h4><p><a class="link" href="#story">Open the landing page</a> · it explains the feature set; the app is the product.</p></div>` });
+    H.widgetHome?.bindNotes(sheet);
     $$("[data-canvas]", sheet).forEach((b) => (b.onclick = () => { H.setCanvas(b.dataset.canvas); $$("[data-canvas]", sheet).forEach((x) => x.classList.toggle("on", x === b)); }));
     $$("[data-demo]", sheet).forEach((b) => (b.onclick = () => { const k = b.dataset.demo; state[k] = !state[k]; b.classList.toggle("on", state[k]); if (k === "morning") state.now = state.morning ? new Date(2026, 8, 13, 5, 40) : new Date(2026, 8, 9, 9, 0); H.rerender(); }));
     $("#viewas-sel", sheet).onchange = (e) => { state.viewAs = e.target.value || null; H.rerender(); };
@@ -3634,6 +3840,153 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
       $("#wopen", w).onclick = () => { wiz.step = 0; H.go("today"); };
     }
     H.paintStills(w); H.bindCards(w);
+  };
+})();
+
+/* Widget Home experiment. Remove this module and home.css to restore classic Today.
+   All work reads the shared project/tool model. Only personal layout persists. */
+(function () {
+  const H = window.H, $ = H.$, $$ = H.$$, esc = H.esc, ic = H.ic, fmt = H.fmt, st = H.state;
+  const KEY = 'halation.widget-home.v1';
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (_) {}
+  const defaults = ['needs', 'money', 'shoot', 'tasks', 'reviews', 'delivery', 'clients', 'week', 'estate'];
+  let enabled = saved.enabled === true, solid = saved.solid === true, editing = false, draft = null;
+  let order = [...new Set((Array.isArray(saved.order) ? saved.order : []).filter(k => defaults.includes(k)))];
+  order = order.concat(defaults.filter(k => !order.includes(k)));
+  let hidden = new Set((Array.isArray(saved.hidden) ? saved.hidden : ['week']).filter(k => defaults.includes(k)));
+  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify({enabled, solid, order, hidden: [...hidden]})); } catch (_) { H.toast('This browser cannot save the layout. It will last for this visit.'); } };
+  const projects = () => H.visibleProjects();
+  const usable = (p, t) => H.has(p, t) && H.sees(t);
+  const withTool = t => projects().filter(p => usable(p, t));
+  const allowed = t => H.sees(t) && (withTool(t).length > 0 || H.activeWorkflows().some(k => (st.lens === 'all' || st.lens === k) && H.wf(k).tools.on.includes(t)));
+  const canClients = () => st.everyoneSees || ['Owner','Producer','Accountant'].includes(H.role());
+  const reProjects = () => H.activeProjects().filter(p => p.workflow === 'realestate');
+  const reAllowed = () => H.wf('realestate').on && reProjects().some(p => ['orders','schedule','property','deliver'].some(t => usable(p,t)));
+  const href = (p, tab) => `#app/p/${p.id}/${tab || 'overview'}`;
+  const empty = text => `<p class="wh-empty">${esc(text)}</p>`;
+  const needs = () => H.activeInbox().filter(i => i.needsAction && !st.read.has(i.id) && projects().some(p => p.id === i.project) && H.sees(({payment:'invoices',approval:'review',order:'orders',upload:'deliver',client:'deliver',mention:'tasks'})[i.kind] || 'tasks'));
+  const tabFor = i => ({payment:'money',approval:'review',order:'orders',upload:'files',client:'deliver'})[i.kind] || 'overview';
+  const tasks = () => withTool('tasks').flatMap(p => (p.tasks || []).map(t => ({p,t}))).filter(x => x.t.status !== 'Done').sort((a,b) => (a.t.due || '9999').localeCompare(b.t.due || '9999'));
+  const reviews = () => withTool('review').filter(p => p.deliverables.some(d => ['In review','Changes requested'].includes(d.status)));
+  const shoots = () => H.activeShoots().filter(s => (st.lens === 'all' || s.workflow === st.lens) && H.sees('schedule') && (projects().some(p => p.workflow === s.workflow && usable(p,'schedule')) || H.wf(s.workflow).tools.on.includes('schedule')) && fmt.daysUntil(s.d) >= 0).sort((a,b) => a.d.localeCompare(b.d));
+  const row = (title, sub, url, end = '') => `<a class="wh-row" href="${url}"><span><b>${esc(title)}</b><small>${esc(sub)}</small></span>${end || ic('chevR')}</a>`;
+  const amount = n => `<div class="wh-number">${fmt.money(n)}</div>`;
+  const card = (k, label, icon, url, body, cls='') => `<article class="wh-card ${cls}" data-widget="${k}"><a class="wh-card-link wh-card-title" href="${url}" aria-label="Open ${label}">${ic(icon)}<h2>${label}</h2>${ic('arrowR')}</a>${body}</article>`;
+  const widgets = () => ({
+    needs: {label:'Needs you', icon:'inbox', size:'wh-wide', show:() => ['review','invoices','orders','tasks'].some(allowed), render:() => { const n=needs(); return card('needs','Needs you','inbox','#app/inbox',`<div class="wh-priority"><strong>${n.length ? `${n.length} things to move forward.` : 'Room to focus.'}</strong><p>${n.length ? 'Your next decisions, in one place.' : 'Nothing needs you. Go shoot.'}</p></div><div class="wh-rows">${n.slice(0,2).map(i => row(i.kind==='payment'?'An invoice needs attention':i.kind==='approval'?'Client feedback is ready':'An order needs a look', PROJECTS.find(p=>p.id===i.project).title, href({id:i.project},tabFor(i)),H.pill(i.kind==='payment'&&/overdue/i.test(i.text)?'Overdue':i.kind==='approval'?'Changes requested':'Not started'))).join('')}</div><div class="wh-caption">${n.length>2?`${n.length-2} more in your inbox`:'A clear queue, a quieter day'}</div>`,'wh-wide wh-priority-card'); }},
+    money: {label:'Money',icon:'dollar',show:()=>allowed('invoices'),render:()=> { const ps=withTool('invoices').filter(p=>p.invoice),total=ps.reduce((n,p)=>n+H.openBalance(p),0), late=ps.filter(p=>H.openBalance(p)>0 && p.invoice.due && fmt.daysUntil(p.invoice.due)<0).length; return card('money','Money','dollar','#app/money-app',`${amount(total)}<p>Outstanding balance</p><div class="wh-bottom">${late?H.pill('Overdue')+`<span>${late} invoice${late===1?'':'s'}</span>`:'No overdue invoices'}</div>`); }},
+    shoot: {label:'Next shoot',icon:'camera',show:()=>allowed('schedule'),render:()=>{const s=shoots()[0];return card('shoot','Next shoot','camera','#app/calendar',s?`<div class="wh-date">${fmt.date(s.d)}</div><h3>${esc(s.title)}</h3><p>${esc(s.time)}${s.tentative?' · tentative hold':''}</p><div class="wh-bottom">${ic('users')}<span>${s.who.map(id=>esc(H.person(id).name.split(' ')[0])).join(' · ')}</span></div>`:empty('No shoots scheduled. Enjoy the breathing room.'));}},
+    reviews:{label:'Review',icon:'film',show:()=>allowed('review'),render:()=>{const ps=reviews();return card('reviews','Review','film','#app/review-app',`<div class="wh-number">${ps.length}<span> jobs</span></div><p>In the feedback loop</p><div class="wh-bottom">${ps.length?H.pill(ps.some(p=>p.deliverables.some(d=>d.status==='Changes requested'))?'Changes requested':'In review'):'No reviews waiting'}</div>`);}},
+    tasks:{label:'Tasks',icon:'check',show:()=>allowed('tasks'),render:()=> {const ts=tasks();return card('tasks','Tasks','check','#app/tasks-app',`<div class="wh-rows">${ts.slice(0,3).map(({p,t})=>row(t.title,`${p.title} · ${fmt.rel(t.due)}`,href(p,'tasks'))).join('')||empty('The task list is clear.')}</div><div class="wh-caption">${ts.length} open across your work</div>`,'wh-wide');}},
+    week:{label:'This week',icon:'calendar',show:()=>allowed('schedule'),render:()=>{const ss=shoots().filter(s=>fmt.daysUntil(s.d)<7);return card('week','This week','calendar','#app/calendar',`<div class="wh-week">${Array.from({length:7},(_,i)=>{const d=new Date(st.now);d.setDate(d.getDate()+i);const iso=fmt.isoLocal(d),count=ss.filter(s=>s.d===iso).length;return `<div class="${i===0?'wh-today':''}"><small>${d.toLocaleDateString('en-US',{weekday:'narrow'})}</small><b>${d.getDate()}</b><span>${count?ic('camera'):''}</span></div>`;}).join('')}</div><p>${ss.length} shoot${ss.length===1?'':'s'} in the next seven days</p>`,'wh-wide');}},
+    delivery:{label:'Delivery',icon:'download',show:()=>allowed('deliver'),render:()=>{const ps=withTool('deliver').filter(p=>p.deliverables.length && !p.deliverables.every(d=>d.status==='Delivered'));const ready=ps.filter(p=>p.deliverables.every(d=>['Approved','Ready','Delivered'].includes(d.status)));return card('delivery','Delivery','download','#app/deliver-app',`<div class="wh-number">${ps.length}<span> jobs</span></div><p>On the way to delivery</p><div class="wh-bottom">${ready.length?`${ready.length} ready for a final check`:'Open the media readiness list'}</div>`);}},
+    clients:{label:'Clients',icon:'users',show:()=>projects().some(p=>p.client)&&canClients(),render:()=>{const ids=[...new Set(projects().map(p=>p.client).filter(Boolean))];return card('clients','Clients','users','#app/clients',`<div class="wh-number">${ids.length}</div><p>Clients in this view</p><div class="wh-bottom wh-client-names">${ids.slice(0,3).map(id=>esc(H.client(id).name)).join(' · ')}</div>`,'wh-wide');}},
+    estate:{label:'Real Estate',icon:'building',show:()=>reAllowed()&&(st.lens==='all'||st.lens==='realestate'),render:()=>card('estate','Real Estate','building','#app/estate',`<div class="wh-number">${reProjects().filter(p=>!H.finished(p)).length}<span> listings</span></div><p>From order to front door.</p><div class="wh-bottom">Orders · shoots · delivery</div>`)}
+  });
+  const header = (title, sub, right='') => `<header class="wh-heading"><div><div class="wh-eyebrow">${esc(WORKSPACE.name)}</div><h1>${title}</h1><p>${sub}</p></div>${right}</header>`;
+  const bindHome = c => {
+    $('#wh-edit',c)?.addEventListener('click',()=>{editing=!editing;draft=editing?{order:[...order],hidden:new Set(hidden)}:null;render(c);});
+    $('#wh-apps',c)?.addEventListener('click',appLibrary);
+    $('#wh-focus',c)?.addEventListener('change',e=>{st.lens=e.target.value;H.rerender();});
+    $('#wh-settings',c)?.addEventListener('click',()=>H.go('workflows'));
+    $('#wh-save',c)?.addEventListener('click',()=>{editing=false;draft=null;persist();render(c);c.scrollTop=0;$('#wh-edit',c)?.focus({preventScroll:true});});
+    $('#wh-cancel',c)?.addEventListener('click',()=>{order=draft.order;hidden=draft.hidden;draft=null;editing=false;render(c);c.scrollTop=0;$('#wh-edit',c)?.focus({preventScroll:true});});
+    $('#wh-reset',c)?.addEventListener('click',()=>{order=[...defaults];hidden=new Set(['week']);render(c);$('#wh-reset',c)?.focus();});
+    $$('[data-wh-hide]',c).forEach(b=>b.onclick=()=>{const k=b.dataset.whHide;hidden.has(k)?hidden.delete(k):hidden.add(k);render(c);$(`[data-wh-hide="${k}"]`,c)?.focus();});
+    $$('[data-wh-move]',c).forEach(b=>b.onclick=()=>{const k=b.dataset.whMove,delta=+b.dataset.delta, visible=order.filter(x=>widgets()[x].show()), target=visible[visible.indexOf(k)+delta];if(!target)return;const a=order.indexOf(k),z=order.indexOf(target);[order[a],order[z]]=[order[z],order[a]];render(c);$(`[data-wh-move="${k}"][data-delta="${delta}"]`,c)?.focus();$('#wh-layout-status',c).textContent=`${widgets()[k].label} moved ${delta<0?'earlier':'later'}.`;});
+  };
+  function render(c) {
+    if(st.lens!=='all'&&!H.wf(st.lens)?.on)st.lens='all';
+    H.setCrumbs([{label:'Home'}]); H.setActionbar([]);
+    const ws=widgets(),keys=order.filter(k=>ws[k].show());
+    c.innerHTML=`<div class="wh-home">${header('A little clarity.<br>A lot more room.',`${st.now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})} · ${st.lens==='all'?'All your work':esc(H.wf(st.lens).label)}`,`<button class="btn" id="wh-apps">${ic('grid')}Apps</button>`)}
+      ${H.activeWorkflows().length>1?`<label class="wh-focus"><span>Focus</span><select id="wh-focus" aria-label="Home workflow"><option value="all">All work</option>${H.activeWorkflows().map(k=>`<option value="${k}" ${st.lens===k?'selected':''}>${esc(H.wf(k).label)}</option>`).join('')}</select></label>`:''}
+      ${editing?`<section class="wh-editor" aria-label="Edit Home"><div class="wh-editor-head"><div><h2>Make room for your work.</h2><p>Show what helps. Put it in your order.</p></div><button class="btn" id="wh-reset">Reset layout</button></div><div class="wh-edit-list">${keys.map((k,i)=>`<div class="wh-edit-row">${ic(ws[k].icon)}<span>${ws[k].label}</span><button class="iconbtn" data-wh-move="${k}" data-delta="-1" aria-label="Move ${ws[k].label} earlier" ${i===0?'disabled':''}>${ic('chevL')}</button><button class="iconbtn" data-wh-move="${k}" data-delta="1" aria-label="Move ${ws[k].label} later" ${i===keys.length-1?'disabled':''}>${ic('chevR')}</button><button class="tg ${hidden.has(k)?'':'on'}" role="switch" aria-checked="${!hidden.has(k)}" aria-label="Show ${ws[k].label}" data-wh-hide="${k}"></button></div>`).join('')}</div><span id="wh-layout-status" class="wh-sr" role="status"></span><div class="wh-editor-foot"><button class="btn" id="wh-cancel">Cancel</button><button class="btn primary" id="wh-save">Save layout</button></div></section>`:''}
+      <div class="wh-grid">${keys.filter(k=>!hidden.has(k)).map(k=>ws[k].render()).join('')||empty(keys.length?'Your Home is clear. Edit Home to bring a widget back.':'Turn on a Workflow to make room for your work.')}</div>
+      <footer class="wh-footer"><span>${editing?'Previewing your layout':'Prototype · sample data'} · ${st.offline?'Offline sample, not live':'Your active Workflows shape this space'}</span></footer>
+      ${editing?'':`<div class="wh-float"><button id="wh-edit">${ic('pencil')}Edit Home</button><span></span><button id="wh-settings" aria-label="Workflows and app sets">${ic('settings')}</button></div>`}</div>`;
+    bindHome(c);
+  }
+  function appLibrary() {
+    const entries=[['today','Home','home',true],['inbox','Inbox','inbox',true],['projects','Projects','folder',true],['review-app','Review','film',allowed('review')],['tasks-app','Tasks','check',allowed('tasks')],['deliver-app','Delivery','download',allowed('deliver')],['calendar','Calendar','calendar',allowed('schedule')],['money-app','Money','dollar',allowed('invoices')],['clients','Clients','users',canClients()&&projects().some(p=>p.client)],['files','Files','doc',true],['media','Media','filmstrip',true],['estate','Real Estate','building',reAllowed()]];
+    const sh=H.sheet.open({title:'Your apps',body:`<p class="wh-library-intro">One workspace. The right place for each job.</p><div class="wh-app-grid">${entries.filter(x=>x[3]).map(([id,label,icon])=>`<a href="#app/${id}" class="wh-app-tile">${ic(icon)}<b>${label}</b></a>`).join('')}</div><div class="note"><h4>Your app sets</h4><p>${H.activeWorkflows().map(k=>esc(H.wf(k).label)).join(' · ')||'No Workflows on'}</p><p>App sets follow your Workflows. Turn one off and its work leaves Home.</p><a class="btn" href="#app/workflows">${ic('layers')}Manage Workflows</a></div>`});
+    $$('a',sh).forEach(a=>a.addEventListener('click',()=>H.sheet.close()));
+  }
+  function unavailable(c) { H.setCrumbs([{label:'Home',go:'today'},{label:'Unavailable'}]); c.innerHTML=header('This app is off.','Return Home or manage your active Workflows.',`<a class="btn" href="#app/today">Back Home</a>`);H.setActionbar([]); }
+  H.views['money-app']=c=>{
+    if(!enabled||!allowed('invoices'))return unavailable(c);
+    const ps=withTool('invoices').filter(p=>p.invoice&&H.openBalance(p)>0);
+    H.setCrumbs([{label:'Home',go:'today'},{label:'Money'}]);H.setActionbar([]);
+    c.innerHTML=`<div class="wh-app-page">${header('Money','What is out for collection.',`<a class="btn" href="#app/money">Full Money workspace${ic('arrowR')}</a>`)}<div class="wh-money-total">${amount(ps.reduce((n,p)=>n+H.openBalance(p),0))}<p>Outstanding balance · ${st.lens==='all'?'all work':esc(H.wf(st.lens).label)}</p></div><div class="wh-work-list">${ps.map(p=>row(p.title,`${p.invoice.number} · ${p.invoice.due?fmt.rel(p.invoice.due):'No due date'}`,href(p,'money'),`<span class="wh-invoice-end">${H.pill(p.invoice.status)}<b>${fmt.money(H.openBalance(p))}</b></span>`)).join('')||empty('Nothing out for collection.')}</div></div>`;
+  };
+  ['review','tasks','deliver'].forEach(tool=>H.views[`${tool}-app`]=c=>{
+    if(!enabled||!allowed(tool))return unavailable(c);
+    const title={review:'Review',tasks:'Tasks',deliver:'Delivery'}[tool];H.setCrumbs([{label:'Home',go:'today'},{label:title}]);H.setActionbar([]);
+    let rows;
+    if(tool==='tasks') rows=tasks().map(({p,t})=>`<div class="wh-task-row"><button class="iconbtn" data-complete="${esc(p.id)}:${esc(t.id)}" aria-label="Complete ${esc(t.title)}">${ic('check')}</button>${row(t.title,`${p.title} · ${fmt.rel(t.due)}`,href(p,'tasks'),H.pill(t.status))}</div>`).join('');
+    else {const ps=tool==='review'?reviews():withTool('deliver').filter(p=>p.deliverables.length&&!p.deliverables.every(d=>d.status==='Delivered'));rows=ps.map(p=>row(p.title,H.clientLine(p),href(p,tool),H.pill(H.deliverableSummary(p).label))).join('');}
+    c.innerHTML=`<div class="wh-app-page">${header(title,{review:'Every cut in the feedback loop.',tasks:'Small steps. Finished work.',deliver:'The final mile, across your jobs.'}[tool])}<div class="wh-work-list">${rows||empty('Nothing waiting here.')}</div></div>`;
+    $$('[data-complete]',c).forEach(b=>b.onclick=()=>{const [pid,tid]=b.dataset.complete.split(':'),t=PROJECTS.find(p=>p.id===pid).tasks.find(t=>t.id===tid),before=t.status;t.status='Done';H.rerender();H.toast('Task completed in the sample project.',{undo:()=>{t.status=before;H.rerender();}});});
+  });
+  // Real Estate is a lens over the existing listing objects, not another database.
+  let reTab='board', reFilter='all', reSearch='';
+  const reTabs=()=>[['board','Orders','orders'],['schedule','Schedule','schedule'],['listings','Listings','property'],['deliveries','Delivery','deliver']].filter(x=>reProjects().some(p=>usable(p,x[2])));
+  function estate(c,r) {
+    if(!enabled||!reAllowed())return unavailable(c);
+    const tabs=reTabs();if(!tabs.length)return unavailable(c);if(!tabs.some(x=>x[0]===reTab))reTab=tabs[0][0];
+    H.setCrumbs([{label:'Home',go:'today'},{label:'Real Estate'}]);H.setActionbar([]);
+    const all=reProjects(),tool=tabs.find(x=>x[0]===reTab)[2],ps=all.filter(p=>usable(p,tool)), selected=r.id&&all.find(p=>p.id===r.id);
+    if(r.id&&!selected)return unavailable(c);
+    if(selected) { if(!['orders','schedule','property','deliver'].some(t=>usable(selected,t)))return unavailable(c); return estateDetail(c,selected); }
+    const filtered=ps.filter(p=>(reFilter==='all'||(reFilter==='due'?p.due&&fmt.daysUntil(p.due)<=1&&!H.finished(p):p.stage===reFilter))&&`${p.title} ${p.agent} ${p.code}`.toLowerCase().includes(reSearch.toLowerCase()));
+    c.innerHTML=`<div class="wh-estate">${header('Real Estate','A good day starts before the front door.',`<div class="wh-detail-actions">${ps.some(p=>usable(p,'orders'))?'<button class="btn primary" id="re-new">'+ic('plus')+'New order</button>':''}</div>`)}
+      <div class="wh-re-summary"><span><b>${all.filter(p=>!H.finished(p)).length}</b> active listings</span>${all.some(p=>usable(p,'schedule'))?`<span><b>${all.filter(p=>usable(p,'schedule')&&p.shootDates.some(d=>fmt.daysUntil(d)>=0)).length}</b> shoots ahead</span>`:''}${all.some(p=>usable(p,'invoices'))?`<span><b>${fmt.money(all.filter(p=>usable(p,'invoices')).reduce((n,p)=>n+H.openBalance(p),0))}</b> outstanding</span>`:''}</div>
+      <div class="wh-re-toolbar"><div class="seg" aria-label="Real Estate view">${tabs.map(([id,label])=>`<button data-re-tab="${id}" aria-pressed="${id===reTab}" class="${id===reTab?'on':''}">${label}</button>`).join('')}</div><label class="wh-search">${ic('search')}<input id="re-search" aria-label="Find a listing" placeholder="Find an address or agent" value="${esc(reSearch)}"></label></div>
+      <div class="wh-re-filters">${[['all','All listings'],['due','Due next'],['Scheduled','Scheduled'],['Editing','Editing'],['Delivered','Delivered']].map(([id,label])=>`<button class="${reFilter===id?'on':''}" data-re-filter="${id}" aria-pressed="${reFilter===id}">${label}</button>`).join('')}</div>
+      <div id="re-results">${estateResults(filtered)}</div>
+      <p class="wh-footer">Prototype · sample listings · shared with Projects</p></div>`;
+    $('#re-new',c)?.addEventListener('click',newOrder);
+    $$('[data-re-tab]',c).forEach(b=>b.onclick=()=>{reTab=b.dataset.reTab;estate(c,r);});
+    $$('[data-re-filter]',c).forEach(b=>b.onclick=()=>{reFilter=b.dataset.reFilter;estate(c,r);});
+    $('#re-search',c).oninput=e=>{reSearch=e.target.value;const matching=ps.filter(p=>(reFilter==='all'||(reFilter==='due'?p.due&&fmt.daysUntil(p.due)<=1&&!H.finished(p):p.stage===reFilter))&&`${p.title} ${p.agent} ${p.code}`.toLowerCase().includes(reSearch.toLowerCase()));$('#re-results',c).innerHTML=estateResults(matching);$$('[data-re-schedule]',c).forEach(b=>b.onclick=()=>schedule(all.find(p=>p.id===b.dataset.reSchedule)));};
+    $$('[data-re-schedule]',c).forEach(b=>b.onclick=()=>schedule(all.find(p=>p.id===b.dataset.reSchedule)));
+  }
+  function estateResults(filtered) { if(!filtered.length)return empty('No listings match. Try another address or filter.'); return reTab==='board'?`<div class="wh-board">${[['upcoming','Before the shoot', ['Order','Scheduled']],['production','In the studio',['Shot','Editing']],['finished','With the agent',['Delivered','Paid']]].map(([id,label,stages])=>{const group=filtered.filter(p=>stages.includes(p.stage));return `<section class="wh-board-column"><h2>${label}<span>${group.length}</span></h2>${group.map(listingCard).join('')||empty('All clear here.')}</section>`;}).join('')}</div>`:reTab==='schedule'?`<div class="wh-schedule">${filtered.filter(p=>p.shootDates.some(d=>fmt.daysUntil(d)>=0)).sort((a,b)=>a.shootDates[0].localeCompare(b.shootDates[0])).map(p=>`<div class="wh-schedule-row"><div class="wh-date-block"><small>${fmt.dow(p.shootDates[0])}</small><b>${fmt.date(p.shootDates[0])}</b></div>${row(p.title,`${p.agent} · ${p.order.package}`,`#app/estate/${p.id}`)}<button class="btn" data-re-schedule="${p.id}">Schedule</button></div>`).join('')||empty('No upcoming shoots in this view.')}</div>`:`<div class="wh-listings">${filtered.map(listingCard).join('')||empty('No listings match this view.')}</div>`; }
+  function listingCard(p) {
+    return `<a class="wh-listing" href="#app/estate/${p.id}"><div class="wh-house-art" aria-hidden="true"><svg viewBox="0 0 280 110" fill="none"><path d="M0 99H280M32 99V57L86 22L140 57V99M49 99V61H122V99M140 99V68L190 37L244 68V99M160 99V72H183V99M199 76H224V88H199ZM66 71H102V89H66ZM14 99V78M259 99V65"/><path d="M40 54L86 24L133 54M147 65L190 39L237 65"/></svg><span>${esc(p.code)}</span></div><div class="wh-listing-body">${H.pill(p.stage)}<h3>${esc(p.title)}</h3><p>${esc(p.agent)}</p><div class="wh-listing-package">${esc(p.order.package)}</div><footer><span>${usable(p,'schedule')?p.due?`${fmt.rel(p.due)} delivery`:'Delivery date to confirm':'Open listing'}</span>${usable(p,'invoices')?`<b>${fmt.money(p.order.price)}</b>`:ic('arrowR')}</footer></div></a>`;
+  }
+  function estateDetail(c,p) {
+    H.setCrumbs([{label:'Home',go:'today'},{label:'Real Estate',go:'estate'},{label:p.code}]);H.setActionbar([]);
+    const ds=usable(p,'deliver'),ss=usable(p,'schedule'),money=usable(p,'invoices'),orders=usable(p,'orders');
+    c.innerHTML=`<div class="wh-estate">${header(esc(p.title),`${esc(p.code)} · ${esc(p.agent)} · ${esc(p.location)}`,H.pill(p.stage))}<div class="wh-detail-grid"><section class="wh-detail-main"><div class="wh-detail-section"><h2>${orders?'The order':'Listing workspace'}</h2>${orders?`<h3>${esc(p.order.package)}</h3><div class="wh-package-items">${p.order.items.map(x=>`<span>${ic('check')}${esc(x)}</span>`).join('')}</div>`:empty('Listing workspace')}<div class="wh-detail-actions">${H.tabs(p).filter(t=>!['overview','files','team'].includes(t.id)).map(t=>`<a class="btn" href="${href(p,t.id)}">${esc(t.label)}${ic('arrowR')}</a>`).join('')}</div></div>${ds?`<div class="wh-detail-section"><h2>Media readiness</h2><p>Review the files before sharing with the agent.</p><div class="wh-media-readiness">${p.deliverables.map(d=>`<div>${ic(d.type==='video'?'film':d.type==='photo'?'image':'doc')}<span><b>${esc(d.name)}</b><small>${esc(d.size)}</small></span>${H.pill(d.status)}</div>`).join('')||empty('Media will appear here after the shoot.')}</div><a class="btn" href="${href(p,'deliver')}">Open delivery${ic('arrowR')}</a></div>`:''}</section><aside class="wh-detail-side">${ss?`<section class="wh-detail-section"><h2>Shoot plan</h2><div class="wh-date">${p.shootDates.length?fmt.date(p.shootDates[0]):'Not scheduled'}</div><p>${esc(p.location)}</p><p>${p.team.map(id=>esc(H.person(id).name)).join(' · ')}</p><button class="btn" id="re-schedule">${ic('calendar')}Change schedule</button></section>`:''}${money?`<section class="wh-detail-section"><h2>Payment</h2>${amount(p.invoice.status==='Draft'?p.invoice.total:H.openBalance(p))}<p>${p.invoice.status==='Draft'?'Draft order total':'Outstanding'} · ${esc(p.invoice.terms)}</p>${H.pill(p.invoice.status)}<a class="wh-row" href="${href(p,'money')}">Open invoice ${ic('arrowR')}</a></section>`:''}<section class="wh-detail-section"><h2>Job folder</h2><p>The same listing, files and history you know from Projects.</p><a class="btn" href="${href(p)}">Open full project${ic('arrowR')}</a></section></aside></div></div>`;
+    $('#re-schedule',c)?.addEventListener('click',()=>schedule(p));
+  }
+  function newOrder() {
+    const packages=[{name:'Photo Essentials',price:375,items:['25 HDR photos','Drone (5)']},{name:'Signature Photo + Video',price:550,items:['36 HDR photos','60s walkthrough video','Drone (8)','Floor plan']},{name:'Signature + Twilight',price:725,items:['40 HDR photos','Twilight (4)','90s video','Drone (10)']}];
+    const clients=CLIENTS.filter(cl=>cl.workflow==='realestate');
+    const sh=H.sheet.open({title:'New listing order',body:`<form id="re-order-form" class="form"><label class="fld"><span>Property address</span><input class="field" name="address" required maxlength="120" placeholder="Street address, city"></label><label class="fld"><span>Agent</span><select class="field" name="agent">${clients.map(cl=>`<option value="${cl.id}">${esc(cl.contact)} · ${esc(cl.name)}</option>`).join('')}</select></label><label class="fld"><span>Package</span><select class="field" name="package">${packages.map((x,i)=>`<option value="${i}">${x.name} · ${fmt.money(x.price)}</option>`).join('')}</select></label><p class="wh-library-intro">Creates a sample order in this workspace. It lasts for this visit. No invoice or message is sent.</p><p id="re-order-error" role="alert"></p></form>`,foot:'<button class="btn primary" id="re-order-save">Create sample order</button>'});
+    $('#re-order-form',sh).onsubmit=e=>{e.preventDefault();$('#re-order-save',sh).click();};
+    $('#re-order-save',sh).onclick=()=>{
+      const form=$('#re-order-form',sh);if(!form.reportValidity())return;
+      const title=$('[name=address]',sh).value.trim();if(!title){$('#re-order-error',sh).textContent='Enter a property address.';return;}
+      const cl=clients.find(x=>x.id===$('[name=agent]',sh).value), pack=packages[+$('[name=package]',sh).value];
+      const sequence=Math.max(...reProjects().map(p=>parseInt(p.code.replace(/\D/g,''))||2042))+1;
+      const p={id:'l'+sequence,code:'L-'+sequence,title,client:cl.id,workflow:'realestate',category:'Real Estate',stage:'Order',stageIndex:0,agent:cl.contact,mls:'—',cover:{hue:30,hue2:200,label:'NEW_LISTING'},due:null,shootDates:[],location:title,team:[st.me],order:{package:pack.name,items:[...pack.items],price:pack.price},invoice:{number:'—',status:'Draft',total:pack.price,paid:0,due:null,terms:'Pay to download',timeline:[],reminders:[]},deliverables:[],tasks:[],comments:[],activity:[{t:'Just now',e:'Sample listing order created'}],files:{}};
+      PROJECTS.unshift(p);H.sheet.close();H.go('estate',p.id);H.toast('Sample order created. Choose a shoot date next.');
+    };
+  }
+  function schedule(p) {
+    const old=[...p.shootDates], existing=SHOOT_DAYS.find(s=>s.project===p.id||(!s.project&&s.workflow==='realestate'&&old.includes(s.d)&&s.title.startsWith(p.title.split(',')[0])));
+    const sh=H.sheet.open({title:'Schedule this listing',body:`<p>${esc(p.title)}</p><label class="fld"><span>Shoot date</span><input class="field" id="re-date" type="date" min="${fmt.isoLocal(st.now)}" value="${old.find(d=>fmt.daysUntil(d)>=0)||fmt.isoLocal(st.now)}" required></label><p class="wh-library-intro">Updates this sample listing and Calendar. No confirmation is sent to the agent.</p><p id="re-date-error" role="alert"></p>`,foot:'<button class="btn primary" id="re-date-save">Save schedule</button>'});
+    $('#re-date-save',sh).onclick=()=>{const date=$('#re-date',sh).value;if(!date||date<fmt.isoLocal(st.now)){ $('#re-date-error',sh).textContent='Choose today or a future date.';return; }const snapshot=existing?{...existing}:null,oldStage=p.stage,oldIndex=p.stageIndex;p.shootDates=[date];let added;if(existing)existing.d=date;else{added={d:date,title:p.title,who:[...p.team],time:'Time to confirm',workflow:'realestate',project:p.id};SHOOT_DAYS.push(added);}if(p.stage==='Order'){p.stage='Scheduled';p.stageIndex=1;}H.sheet.close();H.rerender();H.toast('Sample schedule updated. Calendar has the same date.',{undo:()=>{p.shootDates=old;p.stage=oldStage;p.stageIndex=oldIndex;if(existing)Object.assign(existing,snapshot);else SHOOT_DAYS.splice(SHOOT_DAYS.indexOf(added),1);H.rerender();}});};
+  }
+  window.addEventListener('hashchange',()=>{if(editing&&draft){order=draft.order;hidden=draft.hidden;editing=false;draft=null;}});
+  H.views.estate=estate;
+  H.widgetHome={enabled:()=>enabled,render,
+    shell(app){app.classList.toggle('wh-enabled',enabled);app.classList.toggle('wh-solid',solid);if(!enabled)return;const target=$('.topbar .actions',app),b=document.createElement('button');b.className='iconbtn';b.setAttribute('aria-label','Your apps');b.innerHTML=ic('grid');b.onclick=appLibrary;target.prepend(b);},
+    notes:()=>`<div class="note"><h4>Home experiment</h4><p>Classic Today is the default. Compare the widget Home, then switch back any time. Your personal layout stays on this browser.</p><div class="toggle-row"><div class="grow">Widget Home</div><button class="tg ${enabled?'on':''}" id="wh-enable" role="switch" aria-label="Widget Home" aria-checked="${enabled}"></button></div><div class="toggle-row"><div class="grow">Solid floating controls</div><button class="tg ${solid?'on':''}" id="wh-solid" role="switch" aria-label="Solid floating controls" aria-checked="${solid}"></button></div><p>To try the tailored app: turn on Real Estate in Workflows, then open it from Home or Apps. Task and schedule edits last for this visit.</p></div>`,
+    bindNotes(sh){$('#wh-enable',sh).onclick=()=>{if(editing&&draft){order=draft.order;hidden=draft.hidden;}editing=false;draft=null;enabled=!enabled;persist();H.sheet.close();if(st.route.view==='today')H.rerender();else H.go('today');};$('#wh-solid',sh).onclick=e=>{solid=!solid;persist();e.currentTarget.classList.toggle('on',solid);e.currentTarget.setAttribute('aria-checked',solid);$('#app').classList.toggle('wh-solid',solid);};}
   };
 })();
 
