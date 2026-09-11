@@ -646,6 +646,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
 .pal input::placeholder { color: var(--fg-4); }
 .pal .plist { max-height: 380px; overflow: auto; padding: 6px; }
 .pal .plab { padding: 8px 10px 4px; font-size: var(--t-12); color: var(--fg-4); font-weight: 600; }
+.pal .pempty { padding: 18px 10px 14px; font-size: var(--t-13); color: var(--fg-3); }
 .pal .pitem { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; font-size: var(--t-14); cursor: pointer; }
 .pal .pitem .ico { width: 26px; height: 26px; border-radius: 6px; background: var(--raised); display: grid; place-items: center; color: var(--fg-2); flex: none; font-size: 14px; }
 .pal .pitem .s { color: var(--fg-3); font-size: var(--t-12); margin-left: 6px; }
@@ -1353,7 +1354,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
   </div></section>
 
   <section class="l-sec" id="l-parity"><div class="l-wrap">
-    <div class="l-head"><div class="l-eyebrow">Nothing missing</div><h2>Cancel six subscriptions without losing a feature.</h2><p class="l-p">People leave a tool when the replacement lacks the one thing they can't live without. This is the list we build against.</p></div>
+    <div class="l-head"><div class="l-eyebrow">The list we build against</div><h2>The one feature you'd miss from each tool, and where it lives here.</h2><p class="l-p">People leave a tool when the replacement lacks the one thing they can't live without. This table is that list. Anything marked phase 2 comes after launch.</p></div>
     <div class="tablewrap"><table class="table l-parity">
       <thead><tr><th>You pay for</th><th>The feature you'd miss</th><th>Where it lives</th></tr></thead>
       <tbody>
@@ -1375,13 +1376,13 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
   </div></section>
 
   <section class="l-sec" id="l-pricing"><div class="l-wrap">
-    <div class="l-head"><div class="l-eyebrow">Pricing</div><h2>One flat price for the workspace.</h2></div>
+    <div class="l-head"><div class="l-eyebrow">Proposed pricing</div><h2>One flat price for the workspace.</h2><p class="l-p">These numbers are proposed and will move before launch. Storage is the only meter. People are never a seat.</p></div>
     <div class="l-prices">
-      <div><div class="l-plan">Solo</div><div class="l-price mono">$49</div><div class="l-per">per month</div></div>
-      <div><div class="l-plan">Studio</div><div class="l-price mono">$149</div><div class="l-per">per month</div></div>
-      <div><div class="l-plan">Team</div><div class="l-price mono">$299</div><div class="l-per">per month</div></div>
+      <div><div class="l-plan">Solo</div><div class="l-price mono">$49</div><div class="l-per">per month · 1 TB included</div></div>
+      <div><div class="l-plan">Studio</div><div class="l-price mono">$149</div><div class="l-per">per month · 5 TB included</div></div>
+      <div><div class="l-plan">Agency</div><div class="l-price mono">$299</div><div class="l-per">per month · 10 TB included</div></div>
     </div>
-    <ul class="l-plain l-price-lines"><li>Crew, clients and your accountant never cost a seat.</li><li>Quiet months cost less.</li><li>Rate locked for 24 months.</li></ul>
+    <ul class="l-plain l-price-lines"><li>Crew, clients and your accountant never cost a seat.</li><li>More storage in prepaid packs, $20 per TB per month. No surprise overages.</li><li>Quiet months cost less.</li><li>Rate locked for 24 months.</li></ul>
   </div></section>
 
   <section class="l-sec" id="l-team"><div class="l-wrap">
@@ -1399,7 +1400,7 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
   </div></section>
 
   <footer class="l-foot"><div class="l-wrap">
-    <span class="mockchip" id="l-version">Prototype · v0.7.3 · 2026-09-09</span>
+    <span class="mockchip" id="l-version">Prototype · v0.7.4 · 2026-09-09</span>
     <span>Clients, people and numbers are sample data.</span>
     <span class="mono l-domain">halation.co</span>
   </div></footer>
@@ -1415,9 +1416,9 @@ dl.facts dd { font-family: var(--mono); font-weight: 500; }
 
 window.BRAND = {
   name: "Halation",
-  version: "0.7.3",
+  version: "0.7.4",
   status: "Prototype",
-  built: "2026-09-09",
+  built: "2026-09-11",
   tagline: "One place to run a camera business.",
   domain: "halation.co"
 };
@@ -2017,6 +2018,8 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
   H.activeWorkflows = () => Object.keys(WORKSPACE.workflows).filter((k) => WORKSPACE.workflows[k].on);
   H.activeProjects = () => PROJECTS.filter((p) => wf(p.workflow).on);
   H.visibleProjects = () => H.activeProjects().filter((p) => state.lens === "all" || p.workflow === state.lens);
+  H.finished = (p) => ["Paid", "Done", "Release"].includes(p.stage);
+  H.openProjects = () => H.activeProjects().filter((p) => !H.finished(p) || fmt.daysUntil(p.due) > -30);
   H.activeShoots = () => SHOOT_DAYS.filter((s) => wf(s.workflow).on);
   H.activeClients = () => CLIENTS.filter((cl) => wf(cl.workflow).on);
   H.anyOn = (tool) => H.activeProjects().some((p) => H.has(p, tool)) || H.activeWorkflows().some((k) => wf(k).tools.on.includes(tool));
@@ -2249,7 +2252,7 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
   const NAV = [
     { id: "today", label: "Today", icon: "home" },
     { id: "inbox", label: "Inbox", icon: "inbox", badge: () => H.activeInbox().filter((i) => i.needsAction && !state.read.has(i.id)).length },
-    { id: "projects", label: "Projects", icon: "folder", count: () => H.activeProjects().length },
+    { id: "projects", label: "Projects", icon: "folder", count: () => H.openProjects().length },
     { id: "clients", label: "Clients", icon: "users", needs: () => H.activeProjects().some((p) => p.client) },
     { id: "calendar", label: "Calendar", icon: "calendar", needs: () => H.anyOn("schedule") },
     { id: "money", label: "Money", icon: "dollar", needs: () => MONEY_TOOLS.some((t) => H.anyOn(t)) },
@@ -2305,7 +2308,7 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
   /* ---------- palette ---------- */
   let palSel = 0;
   H.openPalette = () => {
-    let back = $(".pal-back"); if (!back) { back = document.createElement("div"); back.className = "pal-back"; back.innerHTML = `<div class="pal" role="dialog" aria-modal="true" aria-label="Jump to anything"><div class="pin">${ic("search")}<input placeholder="Jump to a project, client, invoice, or type an action" autocomplete="off"></div><div class="plist"></div><div class="pfoot"><span><span class="kbd">↑↓</span> move</span><span><span class="kbd">↵</span> open</span><span><span class="kbd">esc</span> close</span></div></div>`; document.body.appendChild(back); back.onclick = (e) => { if (e.target === back) H.closePalette(); }; }
+    let back = $(".pal-back"); if (!back) { back = document.createElement("div"); back.className = "pal-back"; back.innerHTML = `<div class="pal" role="dialog" aria-modal="true" aria-label="Jump to anything"><div class="pin">${ic("search")}<input placeholder="Jump to a project, client, file, invoice, or type an action" autocomplete="off"></div><div class="plist"></div><div class="pfoot"><span><span class="kbd">↑↓</span> move</span><span><span class="kbd">↵</span> open</span><span><span class="kbd">esc</span> close</span></div></div>`; document.body.appendChild(back); back.onclick = (e) => { if (e.target === back) H.closePalette(); }; }
     const input = $("input", back); input.value = ""; palSel = 0; renderPal(""); back.classList.add("on"); setTimeout(() => input.focus(), 30);
     input.oninput = () => { palSel = 0; renderPal(input.value); };
     input.onkeydown = (e) => { const items = $$(".pitem", back); if (e.key === "ArrowDown") { palSel = (palSel + 1) % items.length; e.preventDefault(); } else if (e.key === "ArrowUp") { palSel = (palSel - 1 + items.length) % items.length; e.preventDefault(); } else if (e.key === "Enter") { items[palSel] && items[palSel].click(); return; } else if (e.key === "Escape") { H.closePalette(); return; } else return; items.forEach((x, i) => x.classList.toggle("sel", i === palSel)); };
@@ -2328,12 +2331,20 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
       { i: "note", l: "About this mockup", s: `v${BRAND.version} · ${BRAND.built}`, tool: null, f: H.toggleNotes }
     ].filter((a) => !a.tool || H.anyOn(a.tool)).filter((a) => !q || a.l.toLowerCase().includes(q));
     const projs = H.activeProjects().filter((p) => !q || (p.title + p.code + H.clientLine(p)).toLowerCase().includes(q)).slice(0, 6);
+    const clients = q ? CLIENTS.filter((cl) => (cl.name + " " + cl.contact + " " + (cl.email || "")).toLowerCase().includes(q)).slice(0, 4) : [];
+    const files = q ? H.activeProjects().flatMap((p) => (p.deliverables || []).filter((d) => d.name.toLowerCase().includes(q)).map((d) => ({ p, d }))).slice(0, 4) : [];
+    const invs = q ? H.activeProjects().filter((p) => p.invoice && p.invoice.number && p.invoice.number !== "—" && p.invoice.number.toLowerCase().includes(q)).slice(0, 4) : [];
+    const extra = `${clients.length ? `<div class="plab">Clients</div>` : ""}${clients.map((cl) => `<div class="pitem" data-c="${cl.id}"><span class="ico">${ic("users")}</span><span>${esc(cl.name)}</span><span class="s">${esc(cl.contact)} · ${esc(cl.type)}</span></div>`).join("")}
+      ${files.length ? `<div class="plab">Files</div>` : ""}${files.map((x, i) => `<div class="pitem" data-f="${i}"><span class="ico">${ic(x.d.type === "video" ? "film" : "doc")}</span><span>${esc(x.d.name)}</span><span class="s">${esc(x.p.title)} · ${esc(x.d.status)}</span></div>`).join("")}
+      ${invs.length ? `<div class="plab">Invoices</div>` : ""}${invs.map((p) => `<div class="pitem" data-inv="${p.id}"><span class="ico">${ic("receipt")}</span><span>${esc(p.invoice.number)}</span><span class="s">${esc(p.title)} · ${esc(p.invoice.status)}</span></div>`).join("")}`;
     const list = $(".pal .plist");
     const verbs = proj ? H.available(proj).slice(0, 4).map((t) => ({ i: "plus", l: TOOLS[t].verb, s: `on this ${wf(proj.workflow).noun.toLowerCase()}`, f: () => H.addTool(proj, t) })) : [];
-    list.innerHTML = `${verbs.length && (!q || verbs.some((v) => v.l.toLowerCase().includes(q))) ? `<div class="plab">On this ${wf(proj.workflow).noun.toLowerCase()}</div>${verbs.filter((v) => !q || v.l.toLowerCase().includes(q)).map((v, i) => `<div class="pitem" data-verb="${i}"><span class="ico">${ic(v.i)}</span><span>${esc(v.l)}</span><span class="s">${esc(v.s)}</span></div>`).join("")}` : ""}
+    const none = q && !projs.length && !clients.length && !files.length && !invs.length && !acts.length && !(verbs.length && verbs.some((v) => v.l.toLowerCase().includes(q)));
+    list.innerHTML = none ? `<div class="pempty">No results for “${esc(q)}”. Try a project, a client, a file name or an invoice number.</div>` : `${verbs.length && (!q || verbs.some((v) => v.l.toLowerCase().includes(q))) ? `<div class="plab">On this ${wf(proj.workflow).noun.toLowerCase()}</div>${verbs.filter((v) => !q || v.l.toLowerCase().includes(q)).map((v, i) => `<div class="pitem" data-verb="${i}"><span class="ico">${ic(v.i)}</span><span>${esc(v.l)}</span><span class="s">${esc(v.s)}</span></div>`).join("")}` : ""}
       ${projs.length ? `<div class="plab">Projects</div>` : ""}${projs.map((p) => `<div class="pitem" data-p="${p.id}"><span class="ico">${ic(p.workflow === "realestate" ? "building" : p.workflow === "weddings" ? "users" : "film")}</span><span>${esc(p.title)}</span><span class="s">${esc(wf(p.workflow).noun)} · ${esc(p.stage)}</span><span class="k">${H.slotFor(p, 1) ? H.pill(H.slotFor(p, 1).label) : ""}</span></div>`).join("")}
+      ${extra}
       ${acts.length ? `<div class="plab">Actions</div>` : ""}${acts.map((a, i) => `<div class="pitem" data-a="${i}"><span class="ico">${ic(a.i)}</span><span>${esc(a.l)}</span>${a.s ? `<span class="s">${esc(a.s)}</span>` : ""}${a.k ? `<span class="k"><span class="kbd">${a.k}</span></span>` : ""}</div>`).join("")}`;
-    $$(".pitem", list).forEach((el, i) => { el.classList.toggle("sel", i === palSel); el.onclick = () => { H.closePalette(); if (el.dataset.p) H.go("project", el.dataset.p); else if (el.dataset.verb) verbs[+el.dataset.verb].f(); else acts[+el.dataset.a].f(); }; });
+    $$(".pitem", list).forEach((el, i) => { el.classList.toggle("sel", i === palSel); el.onclick = () => { H.closePalette(); if (el.dataset.p) H.go("project", el.dataset.p); else if (el.dataset.c) H.go("clients"); else if (el.dataset.f) { const x = files[+el.dataset.f]; H.go("project", x.p.id, x.d.type === "video" && ["In review", "Changes requested"].includes(x.d.status) ? "review" : "deliver"); } else if (el.dataset.inv) H.go("project", el.dataset.inv, "money"); else if (el.dataset.verb) verbs[+el.dataset.verb].f(); else acts[+el.dataset.a].f(); }; });
   }
   H.remindOverdue = () => {
     const late = H.activeProjects().filter((p) => has(p, "invoices") && p.invoice && p.invoice.status === "Overdue");
@@ -3088,7 +3099,7 @@ window.WHATS_NEW = [ { d: "2026-09-09", t: "Review notes export as Resolve and P
   const head = (h1, sub, actions) => `<div class="page-head"><div><h1>${h1}</h1>${sub ? `<div class="sub">${sub}</div>` : ""}</div>${actions ? `<div class="actions">${actions}</div>` : ""}</div>`;
   const unread = () => H.activeInbox().filter((i) => i.needsAction && !st.read.has(i.id) && !snoozed.has(i.id));
   const tabFor = (i) => ({ payment: "money", approval: "review", order: "orders", upload: "files", client: "deliver" }[i.kind] || "overview");
-  const finished = (p) => ["Paid", "Done", "Release"].includes(p.stage);
+  const finished = H.finished;
   const parseDay = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d, 9); };
   const longDow = (s) => { const d = fmt.daysUntil(s); if (d === 0) return "today"; if (d === 1) return "tomorrow"; return parseDay(s).toLocaleDateString("en-US", { weekday: "long" }); };
   const possessive = (s) => { const w = longDow(s); return w === "today" ? "today's" : w === "tomorrow" ? "tomorrow's" : `${w}'s`; };
